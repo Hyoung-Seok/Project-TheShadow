@@ -10,13 +10,21 @@ public class MapEditor : MonoBehaviour
     [SerializeField] private Vector2Int gridSize;
     [SerializeField] private float cellSize = 1f;
 
+    [Header("Level")] 
+    [SerializeField] private Transform levelParent;
+
     private void Start()
     {
         CreateGridTile();
     }
 
-    private void CreateGridTile()
+    public void CreateGridTile()
     {
+        if (gridParent.childCount != 0)
+        {
+            return;
+        }
+        
         var center = gridParent.position;
 
         var startX = center.x - (gridSize.x * cellSize) / 2 + cellSize * 0.5f;
@@ -34,6 +42,19 @@ public class MapEditor : MonoBehaviour
                 Instantiate(gridTile, pos, Quaternion.identity, gridParent);
             }
         }
+    }
 
+    public void DestroyGrid()
+    {
+        if (gridParent.childCount <= 0)
+        {
+            return;
+        }
+
+        var cnt = gridParent.childCount;
+        for (var i = cnt - 1; i >= 0; --i)
+        {
+            DestroyImmediate(gridParent.GetChild(i).gameObject);
+        }
     }
 }

@@ -1,2 +1,17 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/2.Scripts/UXML/MapEditor.uss?fileID=7433441132597879392&amp;guid=092592a284dbd3e40b7710f9b0cca66d&amp;type=3#MapEditor" />
+    <ui:VisualElement name="TitleArea" style="flex-grow: 1; max-height: none; min-height: auto; flex-direction: column;">
+        <ui:Label text="Map Editor" name="Title" style="-unity-font-definition: url(&quot;project://database/Assets/Font/SCDream5.otf?fileID=12800000&amp;guid=5d10e10bd994cb641b7f9964b9cedeb9&amp;type=3#SCDream5&quot;); font-size: 25px; -unity-text-align: middle-center;" />
+    </ui:VisualElement>
+    <ui:VisualElement name="GridProperty" style="flex-grow: 1; flex-direction: column; align-items: stretch;">
+        <ui:Label text="그리드 설정" name="GridInfo" style="-unity-text-align: middle-left; font-size: 15px; -unity-text-outline-width: 0; letter-spacing: 5px; -unity-font-definition: url(&quot;project://database/Assets/Font/SCDream4.otf?fileID=12800000&amp;guid=d974cade3fb7970479ce11ab0ae43ec0&amp;type=3#SCDream4&quot;); margin-top: 8px; margin-bottom: 5px; -unity-font-style: bold;" />
+        <uie:ObjectField label="그리드 오브젝트" name="GridObject" binding-path="gridTile" style="margin-top: 1.5px; margin-bottom: 1.5px; font-size: 12px; -unity-font-definition: url(&quot;project://database/Assets/Font/SCDream5.otf?fileID=12800000&amp;guid=5d10e10bd994cb641b7f9964b9cedeb9&amp;type=3#SCDream5&quot;);" />
+        <uie:PropertyField name="GridParent" binding-path="gridParent" label="그리드 부모" style="margin-top: 1.5px; margin-bottom: 1.5px; -unity-font-definition: url(&quot;project://database/Assets/Font/SCDream5.otf?fileID=12800000&amp;guid=5d10e10bd994cb641b7f9964b9cedeb9&amp;type=3#SCDream5&quot;); -unity-font-style: normal; font-size: 12px;" />
+        <ui:Vector2IntField label="그리드 크기" name="GridSize" binding-path="gridSize" style="flex-direction: row; align-items: stretch; margin-top: 1.5px; margin-bottom: 1.5px; -unity-font-definition: url(&quot;project://database/Assets/Font/SCDream5.otf?fileID=12800000&amp;guid=5d10e10bd994cb641b7f9964b9cedeb9&amp;type=3#SCDream5&quot;); font-size: 12px;" />
+        <ui:FloatField label="칸 크기" value="1" name="CellSize" password="true" binding-path="cellSize" style="margin-top: 1.5px; margin-bottom: 1.5px; -unity-font-definition: url(&quot;project://database/Assets/Font/SCDream5.otf?fileID=12800000&amp;guid=5d10e10bd994cb641b7f9964b9cedeb9&amp;type=3#SCDream5&quot;); font-size: 12px; -unity-font-style: normal;" />
+        <ui:VisualElement name="GridButtons" style="flex-grow: 1; flex-direction: row; align-items: center; justify-content: center; margin-top: 8px; margin-right: 10px; margin-bottom: 8px; margin-left: 10px;">
+            <ui:Button text="그리드 생성" name="CreateGridBtn" class="button" style="-unity-text-align: middle-center;" />
+            <ui:Button text="그리드 제거" name="DestroyGridBtn" class="button" />
+        </ui:VisualElement>
+    </ui:VisualElement>
 </ui:UXML>
