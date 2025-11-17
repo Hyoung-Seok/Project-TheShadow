@@ -10,8 +10,7 @@ public class MapEditor : MonoBehaviour
     [SerializeField] private Transform gridParent;
     [SerializeField] private Vector2Int gridSize;
     [SerializeField] private float cellSize = 1f;
-
-    [Header("Level")] 
+    
     [SerializeField] private Transform levelParent;
 
     private List<GridTile> _gridTiles;

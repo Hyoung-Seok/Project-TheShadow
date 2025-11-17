@@ -20,3 +20,10 @@
 .button:hover {
     scale: 1.1 1.1;
 }
+
+.propertyField {
+    margin-top: 1.5px;
+    margin-bottom: 1.5px;
+    -unity-font-definition: url("project://database/Assets/Font/SCDream5.otf?fileID=12800000&guid=5d10e10bd994cb641b7f9964b9cedeb9&type=3#SCDream5");
+    -unity-text-align: middle-left;
+}
