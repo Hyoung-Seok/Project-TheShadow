@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -13,10 +14,9 @@ public class MapEditor : MonoBehaviour
     [Header("Level")] 
     [SerializeField] private Transform levelParent;
 
-    private void Start()
-    {
-        CreateGridTile();
-    }
+    private List<GridTile> _gridTiles;
+    private int _prevIndex;
+    private int _curIndex = 0;
 
     public void CreateGridTile()
     {
@@ -24,7 +24,8 @@ public class MapEditor : MonoBehaviour
         {
             return;
         }
-        
+
+        _gridTiles = new List<GridTile>();
         var center = gridParent.position;
 
         var startX = center.x - (gridSize.x * cellSize) / 2 + cellSize * 0.5f;
@@ -39,7 +40,8 @@ public class MapEditor : MonoBehaviour
                 pos.y = center.y;
                 pos.z = startZ - i * cellSize;
 
-                Instantiate(gridTile, pos, Quaternion.identity, gridParent);
+                _gridTiles.Add(Instantiate(gridTile, pos, Quaternion.identity, gridParent)
+                    .GetComponent<GridTile>());
             }
         }
     }
@@ -56,5 +58,17 @@ public class MapEditor : MonoBehaviour
         {
             DestroyImmediate(gridParent.GetChild(i).gameObject);
         }
+    }
+
+    public void SetAlpha(int index)
+    {
+        _curIndex = index;
+        
+        if(_curIndex == _prevIndex) return;
+        
+        _gridTiles[_curIndex].SetAlpha(true);
+        _gridTiles[_prevIndex].SetAlpha(false);
+
+        _prevIndex = _curIndex;
     }
 }

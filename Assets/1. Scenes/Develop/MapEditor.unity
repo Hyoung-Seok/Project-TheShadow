@@ -411,7 +411,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridTile: {fileID: 4520689590204001587, guid: 601d0b21d16309f41b0bad8724ec34a6, type: 3}
   gridParent: {fileID: 1023213356}
-  gridSize: {x: 50, y: 50}
+  gridSize: {x: 10, y: 10}
   cellSize: 1
   levelParent: {fileID: 1826606710}
 --- !u!1 &1826606709
