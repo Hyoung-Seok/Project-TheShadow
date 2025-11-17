@@ -95,6 +95,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1031756661195905844}
+  - component: {fileID: 5646045845181297816}
   - component: {fileID: 6838682804104764637}
   m_Layer: 0
   m_Name: Tile
@@ -119,6 +120,19 @@ Transform:
   - {fileID: 3208629158875753473}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5646045845181297816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4520689590204001587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fab3fffe6324edd45a60628953e01516, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderer: {fileID: 6910136153828727841}
 --- !u!65 &6838682804104764637
 BoxCollider:
   m_ObjectHideFlags: 0
