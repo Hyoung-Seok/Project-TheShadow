@@ -26,5 +26,9 @@
         <ui:VisualElement name="SelectPreviewElement" style="flex-grow: 1; flex-direction: row; align-items: center; margin-top: 10px; margin-bottom: 10px; margin-right: 5px; margin-left: 5px;">
             <ui:VisualElement name="PreviewTexture" style="flex-grow: 1; width: 150px; height: 150px; min-width: auto; margin-right: 80px; margin-left: 80px; margin-top: 10px; margin-bottom: 10px; background-image: none; background-repeat: no-repeat no-repeat;" />
         </ui:VisualElement>
+        <ui:Button text="팔레트에 추가" name="AddPaletteBtn" class="button" style="align-items: auto; justify-content: flex-start; align-self: center; height: 10%;" />
+    </ui:VisualElement>
+    <ui:VisualElement name="PaletteElement" style="flex-grow: 1;">
+        <ui:ListView name="PaletteList" item-template="project://database/Assets/2.Scripts/UXML/MapEditorPalette.uxml?fileID=9197481963319205126&amp;guid=e41a18e9ae450ef4bb86c9bb474de35e&amp;type=3#MapEditorPalette" style="height: 100%;" />
     </ui:VisualElement>
 </ui:UXML>
