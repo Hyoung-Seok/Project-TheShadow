@@ -5,11 +5,14 @@ using UnityEngine.Serialization;
 
 public class MapEditor : MonoBehaviour
 {
+    public LayerMask GridTileLayer => gridTileLayer;
+    
     [Header("Grid Setting")]
     [SerializeField] private GameObject gridTile;
     [SerializeField] private Transform gridParent;
     [SerializeField] private Vector2Int gridSize;
     [SerializeField] private float cellSize = 1f;
+    [SerializeField] private LayerMask gridTileLayer;
     
     [SerializeField] private Transform levelParent;
 

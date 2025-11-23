@@ -458,6 +458,9 @@ MonoBehaviour:
   gridParent: {fileID: 1023213356}
   gridSize: {x: 10, y: 10}
   cellSize: 1
+  gridTileLayer:
+    serializedVersion: 2
+    m_Bits: 2048
   levelParent: {fileID: 1826606710}
 --- !u!1 &1826606709
 GameObject:

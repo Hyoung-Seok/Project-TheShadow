@@ -3,6 +3,11 @@
     <ui:VisualElement name="TitleArea" style="flex-grow: 1; max-height: none; min-height: auto; flex-direction: column;">
         <ui:Label text="Map Editor" name="Title" style="-unity-font-definition: url(&quot;project://database/Assets/Font/SCDream5.otf?fileID=12800000&amp;guid=5d10e10bd994cb641b7f9964b9cedeb9&amp;type=3#SCDream5&quot;); font-size: 25px; -unity-text-align: middle-center;" />
     </ui:VisualElement>
+    <ui:VisualElement name="MapEditorSetting" style="flex-grow: 1;">
+        <ui:Foldout text="맵 에디터 설정" name="MapEditorSettingFoldout" toggle-on-label-click="true" value="false" style="-unity-font-definition: url(&quot;project://database/Assets/Font/SCDream5.otf?fileID=12800000&amp;guid=5d10e10bd994cb641b7f9964b9cedeb9&amp;type=3#SCDream5&quot;); font-size: 13px; -unity-text-align: upper-left; padding-top: 5px; padding-bottom: 5px;">
+            <uie:LayerMaskField label="GridTile Layer" name="GridTileLayer" binding-path="gridTileLayer" />
+        </ui:Foldout>
+    </ui:VisualElement>
     <ui:VisualElement name="GridProperty" style="flex-grow: 1; flex-direction: column; align-items: stretch; background-image: none;">
         <ui:Label text="그리드 설정" name="GridInfo" style="-unity-text-align: middle-left; font-size: 15px; -unity-text-outline-width: 0; letter-spacing: 5px; -unity-font-definition: url(&quot;project://database/Assets/Font/SCDream4.otf?fileID=12800000&amp;guid=d974cade3fb7970479ce11ab0ae43ec0&amp;type=3#SCDream4&quot;); margin-top: 8px; margin-bottom: 5px; -unity-font-style: bold;" />
         <uie:ObjectField label="그리드 오브젝트" name="GridObject" binding-path="gridTile" style="margin-top: 1.5px; margin-bottom: 1.5px; font-size: 12px; -unity-font-definition: url(&quot;project://database/Assets/Font/SCDream5.otf?fileID=12800000&amp;guid=5d10e10bd994cb641b7f9964b9cedeb9&amp;type=3#SCDream5&quot;);" />
@@ -19,7 +24,7 @@
         <uie:PropertyField binding-path="levelParent" label="레벨 부모" name="LevelParent" class="propertyField" />
         <uie:ObjectField label="오브젝트 선택" name="ObjectSelectField" type="UnityEngine.GameObject, UnityEngine.CoreModule" style="-unity-font-definition: url(&quot;project://database/Assets/Font/SCDream5.otf?fileID=12800000&amp;guid=5d10e10bd994cb641b7f9964b9cedeb9&amp;type=3#SCDream5&quot;); margin-top: 1.5px; margin-bottom: 1.5px;" />
         <ui:VisualElement name="SelectPreviewElement" style="flex-grow: 1; flex-direction: row; align-items: center; margin-top: 10px; margin-bottom: 10px; margin-right: 5px; margin-left: 5px;">
-            <ui:VisualElement name="PreviewTexture" style="flex-grow: 1; width: 150px; height: 150px;" />
+            <ui:VisualElement name="PreviewTexture" style="flex-grow: 1; width: 150px; height: 150px; min-width: auto; margin-right: 80px; margin-left: 80px; margin-top: 10px; margin-bottom: 10px; background-image: none; background-repeat: no-repeat no-repeat;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

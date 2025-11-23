@@ -50,7 +50,7 @@ public class CustomMapEditor : Editor
         if (e.type == EventType.MouseMove)
         {
             var ray = HandleUtility.GUIPointToWorldRay(e.mousePosition);
-            if(Physics.Raycast(ray, out hit))
+            if(Physics.Raycast(ray, out hit,_mapEditor.GridTileLayer))
             {
                 var index = hit.transform.GetSiblingIndex();
                 _mapEditor.SetAlpha(index);
@@ -69,7 +69,7 @@ public class CustomMapEditor : Editor
         
         // preview road
         var editor = CreateEditor(obj);
-        var tex = editor.RenderStaticPreview(path, null, 200, 200);
+        var tex = editor.RenderStaticPreview(path, null, 150, 150);
         DestroyImmediate(editor);
 
         _objPreview.style.backgroundImage = new StyleBackground(tex);
