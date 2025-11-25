@@ -23,15 +23,15 @@ public class CustomMapEditor : Editor
     private void OnEnable()
     {
         _mapEditor = (MapEditor)target;
-        SceneView.duringSceneGui += OnSceneGUI;
+        SceneView.duringSceneGui += DuringSceneGUI;
     }
 
     private void OnDisable()
     {
-        SceneView.duringSceneGui -= OnSceneGUI;
+        SceneView.duringSceneGui -= DuringSceneGUI;
     }
 
-    private void OnSceneGUI(SceneView sceneView)
+    private void DuringSceneGUI(SceneView sceneView)
     {
         var e = Event.current;
 
