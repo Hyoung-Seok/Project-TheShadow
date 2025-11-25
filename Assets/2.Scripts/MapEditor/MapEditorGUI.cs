@@ -56,9 +56,9 @@ public class MapEditorGUI
     private void ButtonActionBinding(VisualElement root)
     {
         var gridCreateBtn = root.Q<Button>("CreateGridBtn");
-        var gridRemoveBtn = root.Q<Button>("RemoveBtn");
+        var gridRemoveBtn = root.Q<Button>("DestroyGridBtn");
         var addPaletteBtn = root.Q<Button>("AddPaletteBtn");
-
+        
         gridCreateBtn.clicked += _mapEditor.CreateGridTile;
         gridRemoveBtn.clicked += _mapEditor.DestroyGrid;
         addPaletteBtn.clicked += AddPaletteItem;
