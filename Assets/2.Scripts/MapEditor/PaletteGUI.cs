@@ -7,7 +7,7 @@ public class PaletteGUI
 {
     private readonly List<GameObject> _paletteItemList;
     private readonly ListView _listView;
-    private readonly float _listViewItemInterval = 100f;
+    private const float LISTVIEW_INTERVAL = 100f;
 
     public PaletteGUI(ListView listView)
     {
@@ -38,7 +38,7 @@ public class PaletteGUI
             // TODO : 버튼 클릭 함수 등록
         };
 
-        _listView.fixedItemHeight = _listViewItemInterval;
+        _listView.fixedItemHeight = LISTVIEW_INTERVAL;
     }
 
     public void CreatePaletteItem(GameObject obj)

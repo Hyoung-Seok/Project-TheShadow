@@ -15,9 +15,9 @@ public class MapEditorGUI
     private VisualElement _selectedObjPreview;
     private ObjectField _selectedObj;
     
-    public MapEditorGUI(VisualElement visualTree, MapEditor mapEditor)
+    public MapEditorGUI(VisualElement visualElement, MapEditor mapEditor)
     {
-        _visualElement = visualTree;
+        _visualElement = visualElement;
         _mapEditor = mapEditor;
     }
 

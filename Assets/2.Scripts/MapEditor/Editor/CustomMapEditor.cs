@@ -34,24 +34,27 @@ public class CustomMapEditor : Editor
     private void OnSceneGUI(SceneView sceneView)
     {
         var e = Event.current;
-        var hit = new RaycastHit();
-        
-        // 마우스 선택 막기
-        if (e.type == EventType.Layout)
-        {
-            HandleUtility.AddDefaultControl(GUIUtility.GetControlID(FocusType.Passive));
-        }
 
-        if (e.type == EventType.MouseMove)
+        switch (e.type)
         {
-            var ray = HandleUtility.GUIPointToWorldRay(e.mousePosition);
-            if(Physics.Raycast(ray, out hit,_mapEditor.GridTileLayer))
-            {
-                var index = hit.transform.GetSiblingIndex();
-                _mapEditor.SetAlpha(index);
-            }
+            case EventType.Layout:
+                HandleUtility.AddDefaultControl(GUIUtility.GetControlID(FocusType.Passive));
+                break;
             
-            SceneView.RepaintAll();
+            case EventType.MouseMove:
+                var ray = HandleUtility.GUIPointToWorldRay(e.mousePosition);
+                
+                if(Physics.Raycast(ray, out var hit,_mapEditor.GridTileLayer))
+                {
+                    var index = hit.transform.GetSiblingIndex();
+                    _mapEditor.SetAlpha(index);
+                }
+            
+                SceneView.RepaintAll();
+                break;
+            
+            default:
+                return;
         }
     }
 }
