@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 /// </summary>
 public class MapEditorGUI
 {
-    private readonly VisualTreeAsset _visualTreeAsset;
+    private readonly VisualElement _visualElement;
     private readonly MapEditor _mapEditor;
     private PaletteGUI _paletteGUI;
     
@@ -15,20 +15,17 @@ public class MapEditorGUI
     private VisualElement _selectedObjPreview;
     private ObjectField _selectedObj;
     
-    public MapEditorGUI(VisualTreeAsset visualTree, MapEditor mapEditor)
+    public MapEditorGUI(VisualElement visualTree, MapEditor mapEditor)
     {
-        _visualTreeAsset = visualTree;
+        _visualElement = visualTree;
         _mapEditor = mapEditor;
     }
 
     public void CreateMapEditorGUI()
     {
-        var root = new VisualElement();
-        _visualTreeAsset.CloneTree(root);
-        
-        CreatePalletUI(root);
-        ObjectFieldSetUp(root);
-        ButtonActionBinding(root);
+        CreatePalletUI(_visualElement);
+        ObjectFieldSetUp(_visualElement);
+        ButtonActionBinding(_visualElement);
     }
     
     private void CreatePalletUI(VisualElement root)
