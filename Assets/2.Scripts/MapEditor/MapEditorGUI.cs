@@ -1,6 +1,8 @@
+using System;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Object = UnityEngine.Object;
 
 /// <summary>
 /// UXML의 Query, 버튼 이벤트 연결 등
@@ -26,6 +28,11 @@ public class MapEditorGUI
         CreatePalletUI(_visualElement);
         ObjectFieldSetUp(_visualElement);
         ButtonActionBinding(_visualElement);
+    }
+
+    public void RegisterOnPaletteSelect(Action<GameObject> handler)
+    {
+        _paletteGUI.PaletteItemClickEvent += handler;
     }
     
     private void CreatePalletUI(VisualElement root)

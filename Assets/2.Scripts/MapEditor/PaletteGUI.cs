@@ -9,6 +9,8 @@ public class PaletteGUI
     private readonly ListView _listView;
     private const float LISTVIEW_INTERVAL = 150f;
 
+    public event Action<GameObject> PaletteItemClickEvent; 
+
     public PaletteGUI(ListView listView)
     {
         _paletteItemList = new List<GameObject>();
@@ -39,8 +41,9 @@ public class PaletteGUI
             selectBtn.clicked -= selectBtn.userData as Action;
             removeBtn.clicked -= removeBtn.userData as Action;
             
-            // TODO : 버튼 클릭 함수 등록
-            selectBtn.clicked += OnClickedSelectBtn;
+            Action selectAction = () => OnClickedSelectBtn(index);
+            selectBtn.userData = selectAction;
+            selectBtn.clicked += selectAction;
 
             Action removeAction = () => OnClickedRemoveBtn(index);
             removeBtn.userData = removeAction;
@@ -56,9 +59,9 @@ public class PaletteGUI
         _listView.Rebuild();
     }
 
-    private void OnClickedSelectBtn()
+    private void OnClickedSelectBtn(int index)
     {
-        
+        PaletteItemClickEvent?.Invoke(_paletteItemList[index]);
     }
 
     private void OnClickedRemoveBtn(int index)

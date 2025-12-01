@@ -73,4 +73,20 @@ public class MapEditor : MonoBehaviour
 
         _prevIndex = _curIndex;
     }
+
+    public void PlaceLevelObject(int tileIndex, GameObject obj)
+    {
+        if (_gridTiles == null || _gridTiles.Count <= tileIndex) return;
+
+        var tile = _gridTiles[tileIndex];
+        var pos = tile.transform.position;
+        
+#if UNITY_EDITOR
+        var spawnObj = (GameObject)UnityEditor.PrefabUtility.InstantiatePrefab(obj);
+        UnityEditor.Undo.RegisterCreatedObjectUndo(spawnObj, obj.name);
+#endif
+
+        spawnObj.transform.position = pos;
+        spawnObj.transform.SetParent(levelParent);
+    }
 }

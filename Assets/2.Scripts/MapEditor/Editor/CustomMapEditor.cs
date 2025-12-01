@@ -8,6 +8,8 @@ public class CustomMapEditor : Editor
     public VisualTreeAsset VisualTreeAsset;
     private MapEditor _mapEditor;
     private MapEditorGUI _mapEditorGUI;
+
+    private GameObject _placeObj;
     
     public override VisualElement CreateInspectorGUI()
     {
@@ -16,6 +18,10 @@ public class CustomMapEditor : Editor
 
         _mapEditorGUI = new MapEditorGUI(root, _mapEditor);
         _mapEditorGUI.CreateMapEditorGUI();
+        _mapEditorGUI.RegisterOnPaletteSelect(obj =>
+        {
+            _placeObj = obj;
+        });
         
         return root;
     }
@@ -42,19 +48,39 @@ public class CustomMapEditor : Editor
                 break;
             
             case EventType.MouseMove:
-                var ray = HandleUtility.GUIPointToWorldRay(e.mousePosition);
-                
-                if(Physics.Raycast(ray, out var hit,_mapEditor.GridTileLayer))
+                if (TryGetGridTileIndexFormRay(e, out var hoverIndex))
                 {
-                    var index = hit.transform.GetSiblingIndex();
-                    _mapEditor.SetAlpha(index);
+                    _mapEditor.SetAlpha(hoverIndex);
+                    SceneView.RepaintAll();
                 }
+                break;
             
-                SceneView.RepaintAll();
+            case EventType.MouseDown:
+                if (TryGetGridTileIndexFormRay(e, out var clickedIndex) && _placeObj != null)
+                {
+                    if (_placeObj != null)
+                    {
+                        _mapEditor.PlaceLevelObject(clickedIndex, _placeObj);
+                    }
+                }
                 break;
             
             default:
                 return;
         }
+    }
+
+    private bool TryGetGridTileIndexFormRay(Event e, out int index)
+    {
+        index = -1;
+        var ray = HandleUtility.GUIPointToWorldRay(e.mousePosition);
+                
+        if(Physics.Raycast(ray, out var hit, Mathf.Infinity, _mapEditor.GridTileLayer))
+        {
+            index = hit.transform.GetSiblingIndex();
+            return true;
+        }
+
+        return false;
     }
 }
