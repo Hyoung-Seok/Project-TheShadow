@@ -7,7 +7,7 @@ public class PaletteGUI
 {
     private readonly List<GameObject> _paletteItemList;
     private readonly ListView _listView;
-    private const float LISTVIEW_INTERVAL = 100f;
+    private const float LISTVIEW_INTERVAL = 150f;
 
     public PaletteGUI(ListView listView)
     {
@@ -32,10 +32,16 @@ public class PaletteGUI
             var selectBtn = element.Q<Button>("SelectBtn");
             var removeBtn = element.Q<Button>("RemoveBtn");
 
+            objPreview.style.backgroundSize = new BackgroundSize(BackgroundSizeType.Contain);
+            objPreview.style.backgroundImage 
+                = ObjectPreview.GetObjectPreview(obj, 150, 100);
+            
             selectBtn.clicked -= selectBtn.userData as Action;
             removeBtn.clicked -= removeBtn.userData as Action;
             
             // TODO : 버튼 클릭 함수 등록
+            selectBtn.clicked += OnClickedSelectBtn;
+            removeBtn.clicked += OnClickedRemoveBtn;
         };
 
         _listView.fixedItemHeight = LISTVIEW_INTERVAL;
@@ -45,5 +51,15 @@ public class PaletteGUI
     {
         _paletteItemList.Add(obj);
         _listView.Rebuild();
+    }
+
+    private void OnClickedSelectBtn()
+    {
+        
+    }
+
+    private void OnClickedRemoveBtn()
+    {
+        
     }
 }

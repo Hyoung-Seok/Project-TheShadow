@@ -1,7 +1,7 @@
-<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
     <Style src="project://database/Assets/2.Scripts/UXML/MapEditor.uss?fileID=7433441132597879392&amp;guid=092592a284dbd3e40b7710f9b0cca66d&amp;type=3#MapEditor" />
     <ui:VisualElement name="Palette" style="flex-grow: 1; align-items: stretch; flex-direction: row; height: 150px; min-height: 150px; max-height: 150px;">
-        <ui:VisualElement name="ObjectPreview" style="flex-grow: 1; align-items: stretch; width: 60%; margin-top: 10px; margin-bottom: 10px; margin-right: 5px; margin-left: 5px;" />
+        <ui:VisualElement name="ObjectPreview" style="flex-grow: 1; align-items: stretch; width: 60%; margin-top: 10px; margin-bottom: 10px; margin-right: 5px; margin-left: 5px; background-image: none; height: auto; align-self: stretch;" />
         <ui:VisualElement name="ButtonElement" style="flex-grow: 1; align-items: center; flex-direction: column; justify-content: flex-start; margin-right: 3px; margin-left: 3px; margin-top: 3px; margin-bottom: 3px;">
             <ui:Button text="Select" name="SelectBtn" class="button" style="height: auto; width: 80%;" />
             <ui:Button text="Remove" name="RemoveBtn" double-click-selects-word="true" class="button" style="flex-direction: column; height: auto; width: 80%;" />
