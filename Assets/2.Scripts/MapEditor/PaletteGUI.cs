@@ -41,7 +41,10 @@ public class PaletteGUI
             
             // TODO : 버튼 클릭 함수 등록
             selectBtn.clicked += OnClickedSelectBtn;
-            removeBtn.clicked += OnClickedRemoveBtn;
+
+            Action removeAction = () => OnClickedRemoveBtn(index);
+            removeBtn.userData = removeAction;
+            removeBtn.clicked += removeAction;
         };
 
         _listView.fixedItemHeight = LISTVIEW_INTERVAL;
@@ -58,8 +61,9 @@ public class PaletteGUI
         
     }
 
-    private void OnClickedRemoveBtn()
+    private void OnClickedRemoveBtn(int index)
     {
-        
+        _paletteItemList.RemoveAt(index);
+        _listView.Rebuild();
     }
 }
