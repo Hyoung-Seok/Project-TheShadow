@@ -16,12 +16,10 @@ public class CustomMapEditor : Editor
         var root = new VisualElement();
         VisualTreeAsset.CloneTree(root);
 
-        _mapEditorGUI = new MapEditorGUI(root, _mapEditor);
+        _mapEditorGUI = new MapEditorGUI(root);
         _mapEditorGUI.CreateMapEditorGUI();
-        _mapEditorGUI.RegisterOnPaletteSelect(obj =>
-        {
-            _placeObj = obj;
-        });
+        
+        RegisterMapEditorGUIEvent(root);
         
         return root;
     }
@@ -58,16 +56,26 @@ public class CustomMapEditor : Editor
             case EventType.MouseDown:
                 if (TryGetGridTileIndexFormRay(e, out var clickedIndex) && _placeObj != null)
                 {
-                    if (_placeObj != null)
-                    {
-                        _mapEditor.PlaceLevelObject(clickedIndex, _placeObj);
-                    }
+                    _mapEditor.PlaceLevelObject(clickedIndex, _placeObj);
                 }
                 break;
             
             default:
                 return;
         }
+    }
+
+    private void RegisterMapEditorGUIEvent(VisualElement root)
+    {
+        _mapEditorGUI.CreateGridTileEvent += _mapEditor.CreateGridTile;
+        _mapEditorGUI.DestroyGridTileEvent += _mapEditor.DestroyGrid;
+        
+        _mapEditorGUI.RegisterOnPaletteSelect(obj =>
+        {
+            _placeObj = obj;
+        });
+        
+        _mapEditorGUI.ButtonActionBinding(root);
     }
 
     private bool TryGetGridTileIndexFormRay(Event e, out int index)

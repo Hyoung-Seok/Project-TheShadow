@@ -9,30 +9,43 @@ using Object = UnityEngine.Object;
 /// </summary>
 public class MapEditorGUI
 {
+    #region Event
+    public event Action CreateGridTileEvent;
+    public event Action DestroyGridTileEvent;
+    #endregion
+    
     private readonly VisualElement _visualElement;
-    private readonly MapEditor _mapEditor;
     private PaletteGUI _paletteGUI;
     
-    // UXML Libray
+    // UXML Library
     private VisualElement _selectedObjPreview;
     private ObjectField _selectedObj;
     
-    public MapEditorGUI(VisualElement visualElement, MapEditor mapEditor)
+    public MapEditorGUI(VisualElement visualElement)
     {
         _visualElement = visualElement;
-        _mapEditor = mapEditor;
     }
 
     public void CreateMapEditorGUI()
     {
         CreatePalletUI(_visualElement);
         ObjectFieldSetUp(_visualElement);
-        ButtonActionBinding(_visualElement);
     }
 
     public void RegisterOnPaletteSelect(Action<GameObject> handler)
     {
         _paletteGUI.PaletteItemClickEvent += handler;
+    }
+    
+    public void ButtonActionBinding(VisualElement root)
+    {
+        var gridCreateBtn = root.Q<Button>("CreateGridBtn");
+        var gridRemoveBtn = root.Q<Button>("DestroyGridBtn");
+        var addPaletteBtn = root.Q<Button>("AddPaletteBtn");
+
+        gridCreateBtn.clicked += () => CreateGridTileEvent?.Invoke();
+        gridRemoveBtn.clicked += () => DestroyGridTileEvent?.Invoke();
+        addPaletteBtn.clicked += AddPaletteItem;
     }
     
     private void CreatePalletUI(VisualElement root)
@@ -58,17 +71,6 @@ public class MapEditorGUI
 
         var tex = ObjectPreview.GetObjectPreview(obj);
         _selectedObjPreview.style.backgroundImage = new StyleBackground(tex);
-    }
-
-    private void ButtonActionBinding(VisualElement root)
-    {
-        var gridCreateBtn = root.Q<Button>("CreateGridBtn");
-        var gridRemoveBtn = root.Q<Button>("DestroyGridBtn");
-        var addPaletteBtn = root.Q<Button>("AddPaletteBtn");
-        
-        gridCreateBtn.clicked += _mapEditor.CreateGridTile;
-        gridRemoveBtn.clicked += _mapEditor.DestroyGrid;
-        addPaletteBtn.clicked += AddPaletteItem;
     }
 
     private void AddPaletteItem()
